@@ -10,7 +10,7 @@ var transporter = nodemailer.createTransport({
     secure: true,
     auth: {
         type: 'OAuth2',
-        user: process.env.USER,
+        user: process.env.USER_EMAIL,
         clientId: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRECT,
         refreshToken: process.env.REFRESH_TOKEN,
@@ -25,7 +25,7 @@ var mailOptions = {
   text: 'Hello WOrld'
 };
 
-const job = schedule.scheduleJob('30 * * * *', function() {
+const job = schedule.scheduleJob('53 * * * *', function() {
   const lastLine = readLastLines.read('test.txt', 1)
     .then((line) => {
       const content = {...mailOptions, text: line };
